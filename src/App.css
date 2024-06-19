@@ -1,42 +1,109 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.the-cv {
+  display: flex;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.quick-profile-panel {
+  border: 2px solid grey;
+  padding: 24px;
+  width: fit-content;
+
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+
+  flex-shrink: 0;
+  flex-grow: 1;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.achievement-group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.achievement-name {
+  background-color: lightgray;
+  padding: 2px 8px;
+  margin-bottom: 12px;
 }
 
-.card {
-  padding: 2em;
+.achievement-list, .personal-info-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.read-the-docs {
-  color: #888;
+.personal-info-group {
+  gap: 12px;
+}
+
+.personal-info-group img {
+  width: 18px;
+  height: 18px;
+  padding: 4px;
+  background-color: rgb(230, 230, 230);
+}
+
+.icon-name-pair {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cv-profile {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.creator-occupation {
+  margin-top: 8px;
+  font-weight: 400;
+  color: rgb(110, 110, 110);
+}
+
+.creator-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.creator-summary > p {
+  font-weight: 300;
+}
+
+.work-experience-entry {
+  display: flex;
+  gap: 32px;
+}
+
+.experience-desc {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hori-divider {
+  border: 1px solid peachpuff;
+}
+
+.role {
+  color: rgb(110, 110, 110);
+}
+
+.creator-achievements {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: rgb(57, 57, 57);
+  margin-left: 15px;
+}
+
+.creator-achievements > li {
+  list-style-type: circle;
+}
+
+.cv-app {
+  display: flex;
 }
