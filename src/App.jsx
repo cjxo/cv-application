@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./App.css";
 import ImgPhone from "./assets/phone.svg";
 import ImgEmail from "./assets/email.svg";
@@ -11,7 +12,7 @@ function AchievementCategory({ name, array }) {
   return (
     <div>
       <h2 className="achievement-name">{name}</h2>
-      <ul class="achievement-list">
+      <ul className="achievement-list">
         {
           array.map(achivement => {
             return (
@@ -193,24 +194,80 @@ function CVProfile() {
         altVal="briefcase icon"
         name="Work Experience"
         value={workExperiences}
-      >
-      </CreatorSummary>
-    </section>
-  )
-}
-
-function CVEditorInterface() {
-  return (
-    <section className="cv-editor-container">
-      
+      />
     </section>
   )
 }
 
 function App() {
+  const [selectedFieldId, setSelectedFieldId] = useState(0);
+  const fieldEditLabels = [
+    { id: 0, value: "General Information" },
+    { id: 1, value: "Description" },
+    { id: 2, value: "Educational Experience" },
+    { id: 3, value: "Work Experience" }
+  ];
+
+  const handleSelectField = (id) => {
+    setSelectedFieldId(id);
+  }
+
   return (
     <main className="cv-app">
-      <CVEditorInterface />
+      <section className="cv-editor-container">
+        <nav>
+          <ul className="field-edit-list">
+            {
+              fieldEditLabels.map(({ id, value }) => {
+                return (
+                  <li key={id}>
+                    <button
+                      className="field-edit-btn"
+                      style={{ transform: id === selectedFieldId ? "scale(1.1)" : "" }}
+                      onClick={() => { handleSelectField(id) }}
+                    >{value}</button>
+                  </li>
+                )
+              })
+            }
+          </ul>
+        </nav>
+
+        <main className="interface-container">
+          <h2>General Information</h2>
+
+          <div className="label-input-pair">
+            <label htmlFor="info-name">Full Name:</label>
+            <input id="info-name" />
+          </div>
+
+          <div className="label-input-pair">
+            <label htmlFor="info-name">Occupation: </label>
+            <input id="info-name" />
+          </div>
+
+          <div className="label-input-pair">
+            <label htmlFor="info-name">Telephone: </label>
+            <input id="info-name" type="tel"/>
+          </div>
+
+          <div className="label-input-pair">
+            <label htmlFor="info-name">Email: </label>
+            <input id="info-name" type="email"/>
+          </div>
+
+          <div className="label-input-pair">
+            <label htmlFor="info-name">Location: </label>
+            <input id="info-name" />
+          </div>
+
+          <div className="label-input-pair">
+            <label htmlFor="info-name">LinkedIn: </label>
+            <input id="info-name" />
+          </div>
+        </main>
+      </section>
+
       <section className="the-cv">
         <QuickProfilePanel />
         <CVProfile />
