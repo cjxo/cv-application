@@ -120,6 +120,8 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  flex-shrink: 0;
+  overflow-y: auto;
 }
 
 .field-edit-list {
@@ -155,7 +157,9 @@
   padding: 8px;
   flex-grow: 1;
   border: 2px solid grey;
-  height: min-content;
+
+  display: flex;
+  flex-direction: column;
 }
 
 .interface-container > h2 {
@@ -163,16 +167,64 @@
   margin-bottom: 24px;
 }
 
-.interface-container input {
+.interface-container input,
+.interface-container textarea {
   padding: 8px;
   border-radius: 4px;
   box-shadow: inset 1px 1px 4px #ccc;
+}
+
+.interface-container textarea {
+  width: 100%;
+  box-sizing: border-box;
+  resize: none;
+  height: 400px;
+  max-height: 400px;
 }
 
 .label-input-pair {
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
 
-  margin-bottom: 16px;
+.general-info, .educational-experience-entry {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.educational-experience-entry {
+  border: 1px solid grey;
+  padding: 16px;
+}
+
+.inp-year-span-cont {
+  display: flex;
+}
+
+.inp-year-span-cont > div {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  gap: 8px;
+}
+
+.educational-experience-entry button {
+  padding: 8px;
+  border: 2px solid black;
+}
+
+.btn-animate {
+  transition-property: transform background-color;
+  transition-duration: 100ms;
+  transition-timing-function: linear;
+}
+
+.btn-animate:hover {
+  background-color: rgb(200, 200, 200);
+}
+
+.btn-animate:active {
+  transform: scale(1.02);
 }

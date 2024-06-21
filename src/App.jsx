@@ -199,6 +199,193 @@ function CVProfile() {
   )
 }
 
+function GeneralInforationInterface() {
+  return (
+    <div className="general-info">
+      <div className="label-input-pair">
+        <label htmlFor="info-name">Full Name:</label>
+        <input id="info-name" />
+      </div>
+
+      <div className="label-input-pair">
+        <label htmlFor="info-occ">Occupation: </label>
+        <input id="info-occ" />
+      </div>
+
+      <div className="label-input-pair">
+        <label htmlFor="info-tele">Telephone: </label>
+        <input id="info-tele" type="tel"/>
+      </div>
+
+      <div className="label-input-pair">
+        <label htmlFor="info-email">Email: </label>
+        <input id="info-email" type="email"/>
+      </div>
+
+      <div className="label-input-pair">
+        <label htmlFor="info-loc">Location: </label>
+        <input id="info-loc" />
+      </div>
+
+      <div className="label-input-pair">
+        <label htmlFor="info-linkedin">LinkedIn: </label>
+        <input id="info-linkedin" />
+      </div>
+    </div>
+  )
+}
+
+function DescriptionInterface() {
+  return (
+    <textarea></textarea>
+  );
+}
+
+function EducationExperienceInterface() {
+  const [addNewEntry, setAddNewEntry] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setAddNewEntry(false);
+  };
+
+  const handleOnClick = () => {
+    setAddNewEntry(true);
+  };
+
+  if (addNewEntry) {
+    return (
+      <form
+        className="educational-experience-entry"
+        onSubmit={handleSubmit}>
+        <div className="label-input-pair">
+          <label htmlFor="inp-school-name">School Name: </label>
+          <input id="inp-school-name" />
+        </div>
+
+        <div className="inp-year-span-cont">
+          <div>
+            <label htmlFor="inp-school-year-from">From: </label>
+            <input
+              type="number"
+              min="1900"
+              max="9999"
+              id="inp-school-year-from"
+              />
+          </div>
+
+          <div>
+            <label htmlFor="inp-school-year-from">To: </label>
+            <input
+              type="number"
+              min="1900"
+              max="9999"
+              id="inp-school-year-from"
+            />
+          </div>
+        </div>
+
+        <button className="btn-animate">Ok</button>
+      </form> 
+    )
+  }
+
+  return (
+    <div style={{
+      display: "flex",
+      flexDirection: "column",
+      flexGrow: "1",
+      gap: "20px",
+    }}>
+      <ul
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "16px",
+          paddingLeft: "24px",
+          flexGrow: "1",
+          overflowY: "scroll"
+        }}>
+        <li style={{ listStyleType: "circle" }}>
+          <h3>Some Epic School</h3>
+          <span style={{
+              color: "grey",
+              fontWeight: 300
+            }}>2020 - 2023</span>
+        </li>
+      </ul>
+
+      <button
+        onClick={handleOnClick}
+        className="btn-animate"
+        style={{
+          padding: "8px 32px",
+          border: "2px solid black",
+          marginTop: "auto",
+          marginLeft: "auto",
+      }}>New</button>
+    </div>
+  );
+}
+
+function WorkExperienceInterface() {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+  
+  return (
+    <form
+      className="educational-experience-entry"
+      onSubmit={handleSubmit}>
+      <div className="label-input-pair">
+        <label htmlFor="inp-school-name">Company Name: </label>
+        <input id="inp-school-name" />
+      </div>
+
+      <div className="label-input-pair">
+        <label htmlFor="inp-school-name">Position: </label>
+        <input id="inp-school-name" />
+      </div>
+
+      <div className="inp-year-span-cont">
+        <div>
+          <label htmlFor="inp-school-year-from">From: </label>
+          <input
+            type="number"
+            min="1900"
+            max="9999"
+            id="inp-school-year-from"
+            />
+        </div>
+
+        <div>
+          <label htmlFor="inp-school-year-from">To: </label>
+          <input
+            type="number"
+            min="1900"
+            max="9999"
+            id="inp-school-year-from"
+          />
+        </div>
+      </div>
+
+      <div>Achievements: </div>
+      <ul style={{
+        paddingLeft: "24px",
+      }}>
+        <li
+          style={{
+            paddingLeft: "8px",
+            listStyleType: "circle",
+          }}>
+          <input />
+        </li>
+      </ul>
+      <button className="btn-animate">Ok</button>
+    </form> 
+  )
+}
+
 function App() {
   const [selectedFieldId, setSelectedFieldId] = useState(0);
   const fieldEditLabels = [
@@ -210,7 +397,17 @@ function App() {
 
   const handleSelectField = (id) => {
     setSelectedFieldId(id);
-  }
+  };
+
+  const renderableFromSelectedId = () => {
+    switch (selectedFieldId) {
+      case 0: return <GeneralInforationInterface />;
+      case 1: return <DescriptionInterface />;
+      case 2: return <EducationExperienceInterface />;
+      case 3: return <WorkExperienceInterface />;
+      default: return (<></>);
+    }
+  };
 
   return (
     <main className="cv-app">
@@ -234,37 +431,8 @@ function App() {
         </nav>
 
         <main className="interface-container">
-          <h2>General Information</h2>
-
-          <div className="label-input-pair">
-            <label htmlFor="info-name">Full Name:</label>
-            <input id="info-name" />
-          </div>
-
-          <div className="label-input-pair">
-            <label htmlFor="info-name">Occupation: </label>
-            <input id="info-name" />
-          </div>
-
-          <div className="label-input-pair">
-            <label htmlFor="info-name">Telephone: </label>
-            <input id="info-name" type="tel"/>
-          </div>
-
-          <div className="label-input-pair">
-            <label htmlFor="info-name">Email: </label>
-            <input id="info-name" type="email"/>
-          </div>
-
-          <div className="label-input-pair">
-            <label htmlFor="info-name">Location: </label>
-            <input id="info-name" />
-          </div>
-
-          <div className="label-input-pair">
-            <label htmlFor="info-name">LinkedIn: </label>
-            <input id="info-name" />
-          </div>
+          <h2>{fieldEditLabels[selectedFieldId].value}</h2>
+          {renderableFromSelectedId()}
         </main>
       </section>
 
