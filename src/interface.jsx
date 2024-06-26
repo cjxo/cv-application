@@ -1,4 +1,3 @@
-import { _ } from "lodash";
 import { useState } from "react";
 
 function ListDeletionPair({ key, handleDeleteEntry, children }) {
@@ -261,7 +260,8 @@ function WorkExperienceInterface({ workExperiences, setWorkExperiences }) {
               (element.role === newExperience.role) &&
               (element.from === newExperience.from) &&
               (element.to === newExperience.to) &&
-              (_.isEqual(element.achievements, newExperience.achievements)));
+              ((element.achievements.every(item => newExperience.achievements.includes(item)) &&
+                newExperience.achievements.every(item => element.achievement.includes(item)))));
     });
 
     if (!found) {
