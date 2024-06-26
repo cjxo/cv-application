@@ -12,6 +12,9 @@ body {
   padding: 0;
   font-family: JosefinSans;
   padding: 8px;
+
+  display: flex;
+  justify-content: center;
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -30,4 +33,10 @@ li {
 button {
   border: 0;
   cursor: pointer;
+}
+
+@media (width <= 1300px) {
+  body {
+    justify-content: start;
+  }
 }
